@@ -52,7 +52,7 @@ def run_query_app(username):
         doc_search = Chroma.from_documents(texts, embeddings)
 
         # Initialize VectorDBQA
-        chain = VectorDBQA.from_chain_type(llm=OpenAI(), chain_type="stuff", vectorstore=doc_search)
+        chain = VectorDBQA.from_chain_type(llm=OpenAI(), chain_type="refine", vectorstore=doc_search)
 
         if 'messages' not in st.session_state:
             st.session_state['messages'] = []
